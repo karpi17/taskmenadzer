@@ -1,0 +1,54 @@
+<!-- res/values/themes.xml -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.TaskMenadzer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/app_color_primary</item>
+        <item name="colorOnPrimary">@color/app_color_on_primary</item>
+        <item name="colorPrimaryContainer">@color/app_color_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/app_color_on_primary_container</item>
+        <item name="colorPrimaryInverse">@color/app_color_primary_dark</item> <!-- Do użytku w trybie jasnym, gdy potrzebny jest ciemniejszy Primary -->
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/app_color_secondary</item>
+        <item name="colorOnSecondary">@color/app_color_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/app_color_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/app_color_on_secondary_container</item>
+
+        <!-- Tertiary brand color (opcjonalnie, ale dobra praktyka w MDC3) -->
+        <!-- Możesz zdefiniować trzeci kolor akcentujący, np. inny odcień fioletu lub zupełnie inny kolor -->
+        <!-- <item name="colorTertiary">@color/app_color_tertiary</item> -->
+        <!-- <item name="colorOnTertiary">@color/app_color_on_tertiary</item> -->
+        <!-- <item name="colorTertiaryContainer">@color/app_color_tertiary_container</item> -->
+        <!-- <item name="colorOnTertiaryContainer">@color/app_color_on_tertiary_container</item> -->
+
+        <!-- Error color. -->
+        <item name="colorError">@color/app_color_error</item>
+        <item name="colorOnError">@color/app_color_on_error</item>
+        <item name="colorErrorContainer">@color/app_color_error_container</item>
+        <item name="colorOnErrorContainer">@color/app_color_on_error_container</item>
+
+        <!-- Backgrounds and Surfaces -->
+        <item name="android:colorBackground">@color/app_color_background_light</item>
+        <item name="colorOnBackground">@color/app_color_on_background_light</item>
+
+        <item name="colorSurface">@color/app_color_surface_light</item>
+        <item name="colorOnSurface">@color/app_color_on_surface_light</item>
+        <item name="colorSurfaceVariant">@color/app_color_surface_variant_light</item>
+        <item name="colorOnSurfaceVariant">@color/app_color_on_surface_variant_light</item>
+        <!-- colorSurfaceInverse, colorOnSurfaceInverse - dla kontrastowych powierzchni -->
+
+        <item name="colorOutline">@color/app_color_outline_light</item>
+        <item name="colorOutlineVariant">#C9C5CF</item> <!-- Jaśniejszy wariant obramowania -->
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >@color/app_color_primary_variant</item>
+        <!-- <item name="android:windowLightStatusBar" tools:targetApi="m">false</item> --> <!-- Domyślnie false, bo pasek jest ciemny (purple_700), więc ikony systemowe będą jasne -->
+
+        <!-- Window Background (już miałeś) -->
+        <item name="android:windowBackground">@color/app_color_background_light</item>
+
+        <!-- Inne atrybuty -->
+        <!-- <item name="textAppearanceHeadline1">...</item> -->
+        <!-- <item name="shapeAppearanceSmallComponent">...</item> -->
+    </style>
+</resources>

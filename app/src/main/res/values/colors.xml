@@ -1,0 +1,90 @@
+<!-- res/values/colors.xml -->
+<resources>
+    <!-- Główne kolory marki (z Twojego obecnego themes.xml) -->
+    <color name="seed_primary_purple">#FF6200EE
+    </color> <!-- Twój purple_500, użyty jako "ziarno" do generowania tonów -->
+    <color name="seed_secondary_teal">#FF03DAC5</color> <!-- Twój teal_200, użyty jako "ziarno" -->
+
+    <!-- Kolory Podstawowe (Primary) - wygenerowane/wybrane na bazie seed_primary_purple -->
+    <color name="app_color_primary">@color/seed_primary_purple</color>
+    <color name="app_color_on_primary">#FFFFFFFF</color>
+    <color name="app_color_primary_container">#FFDDE1FF
+    </color> <!-- Jaśniejszy odcień fioletu dla tła kontenera -->
+    <color name="app_color_on_primary_container">#FF21005E
+    </color> <!-- Ciemny fioletowy tekst na jasnym kontenerze -->
+    <color name="app_color_primary_variant">#FF3700B3</color>   <!-- Twój purple_700 -->
+
+    <!-- Kolory Drugorzędne (Secondary) - wygenerowane/wybrane na bazie seed_secondary_teal -->
+    <color name="app_color_secondary">@color/seed_secondary_teal</color>
+    <color name="app_color_on_secondary">#FF000000</color>
+    <color name="app_color_secondary_container">#FFB2FBF6
+    </color> <!-- Jasny odcień turkusu dla tła kontenera -->
+    <color name="app_color_on_secondary_container">#FF00201D
+    </color> <!-- Ciemny turkusowy tekst na jasnym kontenerze -->
+    <color name="app_color_secondary_variant">#FF018786</color>  <!-- Twój teal_700 -->
+
+    <!-- Kolor Błędu (Error) -->
+    <color name="app_color_error">#B00020</color>
+    <color name="app_color_on_error">#FFFFFFFF</color>
+    <color name="app_color_error_container">#FFDAD6</color>
+    <color name="app_color_on_error_container">#410002</color>
+
+    <!-- Kolory Tła i Powierzchni (Tryb Jasny) -->
+    <color name="app_color_background_light">#FFFFFFFF</color> <!-- Twój light_background -->
+    <color name="app_color_on_background_light">#1C1B1F</color> <!-- Ciemnoszary, prawie czarny -->
+
+    <color name="app_color_surface_light">#FFFFFFFF</color>
+    <color name="app_color_on_surface_light">#1C1B1F</color>
+    <color name="app_color_surface_variant_light">#E7E0EC
+    </color> <!-- Jasnoszary/lekko fioletowy odcień -->
+    <color name="app_color_on_surface_variant_light">#49454E</color> <!-- Średnioszary -->
+    <color name="app_color_outline_light">#79747E</color> <!-- Szary dla obramowań -->
+
+    <!-- Kolory dla Trybu Ciemnego (przykładowe, można dostosować) -->
+    <color name="app_color_primary_dark">#FFB5BBF0
+    </color> <!-- Jaśniejszy fioletowy dla trybu ciemnego -->
+    <color name="app_color_on_primary_dark">#381E72</color>
+    <color name="app_color_primary_container_dark">#4F378B</color>
+    <color name="app_color_on_primary_container_dark">#FFDDE1FF</color>
+
+    <color name="app_color_secondary_dark">#7EDCD3</color> <!-- Jaśniejszy turkusowy -->
+    <color name="app_color_on_secondary_dark">#003734</color>
+    <color name="app_color_secondary_container_dark">#00504A</color>
+    <color name="app_color_on_secondary_container_dark">#FFB2FBF6</color>
+
+    <color name="app_color_error_dark">#FFB4AB</color>
+    <color name="app_color_on_error_dark">#690005</color>
+    <color name="app_color_error_container_dark">#93000A</color>
+    <color name="app_color_on_error_container_dark">#FFDAD6</color>
+
+    <color name="app_color_background_dark">#1C1B1F
+    </color> <!-- Ciemnoszary dla tła w trybie ciemnym -->
+    <color name="app_color_on_background_dark">#E6E1E5</color> <!-- Jasnoszary/białawy tekst -->
+
+    <color name="app_color_surface_dark">#1C1B1F
+    </color> <!-- Może być taki sam jak tło lub nieco jaśniejszy/ciemniejszy -->
+    <color name="app_color_on_surface_dark">#E6E1E5</color>
+    <color name="app_color_surface_variant_dark">#49454E</color>
+    <color name="app_color_on_surface_variant_dark">#CAC4D0</color>
+    <color name="app_color_outline_dark">#938F99</color>
+
+    <!-- Zachowaj inne potrzebne kolory -->
+    <color name="white">#FFFFFFFF</color> <!-- Już zdefiniowany jako app_color_on_primary np. -->
+    <color name="black">#FF000000</color> <!-- Już zdefiniowany jako app_color_on_secondary np. -->
+    <color name="green_status">#4CAF50</color>
+    <color name="orange_deadline">#FFA500</color>
+    <color name="date_color">#999999
+    </color> <!-- Możesz rozważyć użycie app_color_on_surface_variant_light -->
+
+    <!-- Usuń oryginalne purple_500, purple_700, teal_200, teal_700, light_background, light_text, black, white, jeśli nie są już bezpośrednio używane po aktualizacji themes.xml -->
+    <!-- (Na razie je zostawiam, aby uniknąć błędów kompilacji, dopóki themes.xml nie zostanie w pełni zaktualizowany) -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="light_background">#FFFFFFFF</color>
+    <color name="light_text">#FF000000</color>
+    <!-- <color name="dark_background">#FF121212</color> --> <!-- Zastąpiony przez app_color_background_dark -->
+    <!-- <color name="dark_text">#FFFFFFFF</color> --> <!-- Zastąpiony przez app_color_on_background_dark -->
+</resources>

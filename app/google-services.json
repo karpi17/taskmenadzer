@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "709683173852",
+    "project_id": "taskmenadzer",
+    "storage_bucket": "taskmenadzer.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709683173852:android:68060eabf2a2ecebfbd719",
+        "android_client_info": {
+          "package_name": "com.taskmenadzer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKRvYH5vwAaLC4ep3Gb7hNzfRyl8B127A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

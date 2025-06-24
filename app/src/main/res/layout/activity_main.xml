@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="12dp"
+    app:cardBackgroundColor="?attr/colorSurface"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/settingsButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/desc_settings_button"
+            android:text="@string/ustawienia"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_setting"
+            app:iconPadding="8dp"
+            app:iconTint="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addTaskButton"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/desc_add_task_button"
+            android:text="@string/dodaj_zadanie"
+            android:visibility="gone"
+            app:backgroundTint="?attr/colorPrimary"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_add"
+            app:iconPadding="8dp"
+            app:iconTint="?attr/colorOnPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settingsButton"
+            tools:ignore="VisualLintButtonSize" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/groupFilterLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="@string/label_filter_group"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addTaskButton"
+            app:startIconDrawable="@drawable/ic_category"
+            app:startIconTint="?attr/colorPrimary">
+
+            <AutoCompleteTextView
+                android:id="@+id/groupFilterAutoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/desc_group_spinner"
+                android:inputType="none"
+                tools:ignore="LabelFor,SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Początkowa widoczność może być 'gone', jeśli chcesz, aby empty state był pierwszy -->
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tasksRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:clipToPadding="false"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:scrollbars="vertical"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/groupFilterLayout"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/emptyStateImageView"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/ic_empty_list"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/emptyStateTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:tint="?attr/colorOnSurfaceVariant"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/emptyStateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/empty_state_message"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emptyStateImageView" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/desc_add_task_fab"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="?attr/colorSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="?attr/colorOnSecondary"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/testTaskStateUpdaterWorkerButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Test TaskStateUpdater Worker"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/testNearDeadlineWorkerButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/testNearDeadlineWorkerButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Test NearDeadline Worker"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

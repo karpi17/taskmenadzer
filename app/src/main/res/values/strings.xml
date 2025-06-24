@@ -1,0 +1,75 @@
+<resources>
+    <string name="confirm_delete_title">Potwierdzenie usunięcia</string>
+    <string name="confirm_delete_message">Czy na pewno chcesz usunąć to zadanie?</string>
+    <string name="delete">Usuń</string>
+    <string name="cancel">Anuluj</string>
+    <string name="app_name">taskmenadzer</string>
+    <string name="deadline_yyyy_mm_dd_hh_mm">Deadline (yyyy-MM-dd HH:mm)</string>
+    <string name="zapisz">Zapisz</string>
+    <string name="tytul">Tytuł</string>
+    <string name="opis">Opis</string>
+    <string name="edycja">Edycja</string>
+    <string name="deadline">Deadline</string>
+    <string name="opis_zadania">Opis zadania</string>
+    <string name="Usuń">Usuń</string>
+    <string name="dodaj_zadanie">Dodaj zadanie</string>
+    <string name="desc_add_task_fab">Dodaj zadanie</string>
+    <string name="task_deadline">Deadline: %1$s</string>
+    <string name="dni_do_bliski_termin">Dni do \'Bliski termin\':</string>
+    <string name="tryb_ciemny">Tryb ciemny</string>
+    <string name="domyslna_kategoria">Domyślna kategoria:</string>
+    <string name="ustawienia">Ustawienia</string>
+    <string name="ustaw">Ustaw</string>
+    <string name="powrot">Powrót</string>
+    <string name="zrobione">Zrobione</string>
+    <string name="zakonczone">Zakończone</string>
+    <string name="desc_settings_button" />
+    <string name="desc_add_task_button" />
+    <string name="desc_edit_task" />
+    <string name="desc_delete_task" />
+    <string name="desc_event_icon" />
+    <string name="desc_title_icon" />
+    <string name="desc_description_icon" />
+    <string name="powiadomienia">Powiadomienia</string>
+    <string name="desc_group_spinner" />
+    <string name="grupa">Grupa</string>
+    <string-array name="group_array_for_spinner">
+        <item>Wszystkie</item>
+        <item>Do zrobienia</item>
+        <item>Ważne</item>
+        <item>Mniej ważne</item>
+        <item>Na wolny czas</item>
+        <item>Zakończone</item>
+        <item>Archiwum</item>
+        <item>Bliski termin</item>
+    </string-array>
+
+    <!-- ... inne stringi ... -->
+    <string name="status_done_simple">Zrobione</string>
+    <string name="label_filter_group">label_filter_group</string>
+    <string name="status_done_archived">Zrobione (Archiwum)</string>
+    <string name="status_not_done_archived">Nie zrobione (Archiwum)</string>
+    <string name="empty_state_message">Nie masz jeszcze żadnych zadań.\nDodaj nowe, aby zacząć!</string>
+    <!-- ... inne stringi ... -->
+    <string name="auto_archive_overdue_tasks">Automatycznie archiwizuj przeterminowane</string>
+    <string name="auto_archive_after_days_hint">Archiwizuj przeterminowane po (dniach)</string>
+    <!-- ... inne stringi ... -->
+    <string name="task_update_summary_notification_label">Powiadamiaj o automatycznych
+        aktualizacjach
+    </string>
+    <string name="w_cz_indywidualne_powiadomienia_o_zbli_aj_cym_si_terminie">Włącz indywidualne powiadomienia o zbliżającym się terminie</string>
+<string name="setting_auto_delete_archived_label">Automatycznie usuwaj archiwalne zadania</string>
+    <string name="setting_auto_delete_archived_days_hint">Usuń archiwalne zadania po (dniach)</string>
+    <string name="setting_auto_delete_archived_days_summary">Po ilu dniach archiwalne zadania mają być usuwane?</string>
+    <string name="setting_auto_archive_summary">Po ilu dniach przeterminowane zadania mają być archiwizowane?</string>
+    <string name="setting_auto_archive_days_hint">Archiwizuj przeterminowane po (dniach)</string>
+    <string name="individual_notification_title">Zbliża się termin zadania!</string>
+    <string name="individual_notification_content">Zadanie: "%1$s" wymaga Twojej uwagi</string>
+    <string name="summary_notification_title">Podsumowanie aktualizacji zadań</string>
+    <string name="individual_notification_content_with_deadline">Zadanie: \'%1$s\'%2$s wymaga Twojej uwagi.</string>
+    <string name="notification_action_mark_as_done">Oznacz jako wykonane.</string>
+    <string name="settings_auto_delete_after_days_label">Automatycznie usuwaj zarchiwizowane zadania
+        starsze niż (dni):
+    </string>
+    <string name="settings_auto_delete_after_days_hint">30</string>
+</resources>

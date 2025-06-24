@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:ignore="ScrollViewCount">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:background="?attr/colorSurface"
+    android:padding="24dp">
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/daysInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/dni_do_bliski_termin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconContentDescription="@string/desc_event_icon"
+        app:startIconDrawable="@drawable/ic_event"
+        app:startIconTint="?attr/colorPrimary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/daysEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColor="?attr/colorOnSurface"
+            tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/darkModeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:minHeight="48dp"
+        android:text="@string/tryb_ciemny"
+        android:textColor="?attr/colorOnSurface"
+        app:drawableStartCompat="@drawable/ic_dark_mode"
+        app:iconTint="?attr/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/daysInputLayout" />
+
+    <TextView
+        android:id="@+id/defaultCategoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:drawablePadding="8dp"
+        android:text="@string/domyslna_kategoria"
+        android:textColor="?attr/colorOnSurface"
+        app:drawableStartCompat="@drawable/ic_category"
+        app:drawableTint="?attr/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/darkModeSwitch" />
+
+    <Spinner
+        android:id="@+id/defaultCategorySpinner"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/defaultCategoryLabel" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchIndividualNearDeadlineNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:minHeight="48dp"
+        android:text="@string/w_cz_indywidualne_powiadomienia_o_zbli_aj_cym_si_terminie"
+        android:textColor="?attr/colorOnSurface"
+        app:drawableStartCompat="@drawable/ic_notification"
+        app:iconTint="?attr/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/defaultCategorySpinner"
+        tools:ignore="VisualLintButtonSize" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchAutoArchive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:minHeight="48dp"
+        android:text="@string/auto_archive_overdue_tasks"
+        android:textColor="?attr/colorOnSurface"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switchIndividualNearDeadlineNotification" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/autoArchiveDaysInputLayout"
+        style="?attr/textInputFilledStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/auto_archive_after_days_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switchAutoArchive">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextAutoArchiveDays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColor="?attr/colorOnSurface"
+            tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/dividerAfterAutoArchive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/autoArchiveDaysInputLayout" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchAutoDeleteArchived"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:minHeight="48dp"
+        android:text="@string/setting_auto_delete_archived_label"
+        android:textColor="?attr/colorOnSurface"
+        app:iconTint="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerAfterAutoArchive"
+        tools:ignore="VisualLintButtonSize" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/autoDeleteArchivedDaysInputLayout"
+        style="?attr/textInputFilledStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/setting_auto_delete_archived_days_hint"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switchAutoDeleteArchived"
+        tools:visibility="visible">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextAutoDeleteArchivedDays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColor="?attr/colorOnSurface"
+            tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchTaskUpdateSummaryNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:minHeight="48dp"
+        android:text="@string/task_update_summary_notification_label"
+        android:textColor="?attr/colorOnSurface"
+        app:drawableStartCompat="@drawable/ic_notification"
+        app:iconTint="?attr/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/autoDeleteArchivedDaysInputLayout"
+        tools:ignore="VisualLintButtonSize" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/ustaw"
+        app:backgroundTint="?attr/colorPrimary"
+        app:icon="@drawable/ic_save"
+        app:iconGravity="textStart"
+        app:iconTint="?attr/colorOnPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switchTaskUpdateSummaryNotification"
+        tools:ignore="VisualLintButtonSize" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/backButton"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/powrot"
+            app:icon="@drawable/ic_arrow_back"
+            app:iconGravity="textStart"
+            app:iconTint="?attr/colorSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/saveButton"
+            tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>

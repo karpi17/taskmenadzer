@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconDrawable="@drawable/ic_title"
+        app:startIconTint="?attr/colorPrimary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTaskTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tytul"
+            android:minHeight="48dp"
+            android:textColor="?attr/colorOnSurface"
+            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:startIconDrawable="@drawable/ic_description"
+        app:startIconTint="?attr/colorPrimary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTaskDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/opis"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:textColor="?attr/colorOnSurface"
+            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:startIconDrawable="@drawable/ic_event"
+        app:startIconTint="?attr/colorPrimary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTaskDeadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/deadline_yyyy_mm_dd_hh_mm"
+            android:inputType="date"
+            android:minHeight="48dp"
+            android:textColor="?attr/colorOnSurface"
+            tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTaskGroupLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/grupa"
+        app:startIconDrawable="@drawable/ic_category"
+        app:startIconTint="?attr/colorPrimary">
+
+        <AutoCompleteTextView
+            android:id="@+id/editTaskGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:minHeight="48dp"
+            android:textColor="?attr/colorOnSurface"
+            tools:ignore="LabelFor,SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkbox_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/zrobione"
+        android:textColor="?attr/colorOnSurface"
+        app:buttonTint="?attr/colorPrimary" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveTaskButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/zapisz"
+        app:backgroundTint="?attr/colorPrimary"
+        app:icon="@drawable/ic_save"
+        app:iconTint="?attr/colorOnPrimary"
+        tools:ignore="VisualLintButtonSize" />
+</LinearLayout>
