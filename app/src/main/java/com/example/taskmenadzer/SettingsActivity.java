@@ -1,5 +1,6 @@
 package com.example.taskmenadzer;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import com.google.android.material.switchmaterial.SwitchMaterial;
@@ -14,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 // Upewnij się, że ten import R jest poprawny dla Twojego projektu
+import com.google.firebase.auth.FirebaseAuth;
 import com.taskmenadzer.R; // Zakładam, że ten import jest poprawny
 
 import java.util.Objects;
@@ -29,6 +33,8 @@ public class SettingsActivity extends AppCompatActivity {
     private SwitchMaterial switchTaskUpdateSummaryNotification;
     private SwitchMaterial switchIndividualNearDeadlineNotification;
     private SwitchMaterial darkModeSwitch;
+    private Button btnLogoutSettings; // << NOWE
+    private FirebaseAuth mAuth;       // << NOWE
 
     // NOWE POLA dla automatycznego usuwania
     private SwitchMaterial switchAutoDeleteArchived;
@@ -54,9 +60,10 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        prefs = getSharedPreferences("settings", MODE_PRIVATE);
+
 
         initializeViews();
+        prefs = getSharedPreferences("settings", MODE_PRIVATE);
         setupDefaultCategorySpinner();
         loadSettings();
         setupListeners();
@@ -70,9 +77,9 @@ public class SettingsActivity extends AppCompatActivity {
         defaultCategorySpinner = findViewById(R.id.defaultCategorySpinner);
         Button saveButton = findViewById(R.id.saveButton);
         Button backButton = findViewById(R.id.backButton);
-
+        btnLogoutSettings = findViewById(R.id.btnLogoutSettings);
         switchAutoArchive = findViewById(R.id.switchAutoArchive);
-
+        mAuth = FirebaseAuth.getInstance(); // << Inicjalizacja mAuth
         autoArchiveDaysInputLayout = findViewById(R.id.autoArchiveDaysInputLayout); // << Inicjalizacja pola dla autoarchiwizacji
         editTextAutoArchiveDays = findViewById(R.id.editTextAutoArchiveDays);
 
@@ -87,8 +94,21 @@ public class SettingsActivity extends AppCompatActivity {
             Log.d(TAG, "Przycisk Wstecz kliknięty.");
             finish();
         });
+        if (btnLogoutSettings != null) { // Dodatkowe sprawdzenie, czy przycisk istnieje w layoucie
+            btnLogoutSettings.setOnClickListener(v -> performLogout());
+        }
     }
-
+    private void performLogout() {
+        mAuth.signOut(); // Wylogowanie użytkownika z Firebase
+        Toast.makeText(this, "Wylogowano pomyślnie", Toast.LENGTH_SHORT).show();
+        navigateToLogin();
+    }
+    private void navigateToLogin() {
+        Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finishAffinity(); // Zamyka wszystkie aktywności w bieżącym zadaniu
+    }
     private void setupDefaultCategorySpinner() {
         String[] categories = {"Wszystkie", "Do zrobienia", "Ważne", "Mniej ważne", "Na wolny czas", "Zakończone", "Archiwum", "Bliski termin"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);

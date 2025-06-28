@@ -12,7 +12,20 @@
           "package_name": "com.taskmenadzer"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "709683173852-fmc7dtsfvg6n4kp6o5u29ae5gguoeldu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taskmenadzer",
+            "certificate_hash": "0fc9ab7f23d3445d43a9c311ab6957d0524b92d8"
+          }
+        },
+        {
+          "client_id": "709683173852-fu9n9jldlql5ogpl364tms3btimb8s7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDKRvYH5vwAaLC4ep3Gb7hNzfRyl8B127A"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709683173852-fu9n9jldlql5ogpl364tms3btimb8s7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

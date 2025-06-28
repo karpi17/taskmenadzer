@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "taskmenadzer"
 include(":app")
- 
+include(":register")
