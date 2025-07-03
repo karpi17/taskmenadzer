@@ -6,7 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build; // Potrzebne dla uprawnienia POST_NOTIFICATIONS
+import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -18,7 +18,7 @@ import androidx.work.WorkerParameters;
 import com.example.taskmenadzer.model.AppDatabase;
 import com.example.taskmenadzer.model.Task;
 import com.example.taskmenadzer.model.TaskEntity;
-import com.taskmenadzer.R;
+import com.example.taskmenadzer.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit; // NOWY IMPORT
+import java.util.concurrent.TimeUnit;
 
 public class TaskStateUpdaterWorker extends Worker {
     private static final String TAG = "TaskStateUpdaterWorker";

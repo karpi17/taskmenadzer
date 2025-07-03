@@ -1,62 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="12dp"
-    app:cardBackgroundColor="?attr/colorSurface"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="8dp">
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:liftOnScroll="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/app_name"
+            app:subtitle="Thursday, July 3, 2025"  />
+        <!-- Możesz ustawić subtitle programowo na aktualną datę -->
+        <!-- Dodaj ikonę logo, jeśli chcesz: app:logo="@drawable/ic_logo_taskmaster" -->
+        <!-- Przycisk ustawień można przenieść tutaj jako menu item, jeśli pasuje -->
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        app:layout_anchor="@+id/constraintLayout"
+        app:layout_anchorGravity="center"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/settingsButton"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/desc_settings_button"
-            android:text="@string/ustawienia"
-            app:cornerRadius="12dp"
-            app:icon="@drawable/ic_setting"
-            app:iconPadding="8dp"
-            app:iconTint="?attr/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/addTaskButton"
-            style="@style/Widget.MaterialComponents.Button"
+        <!-- Sekcja szybkiego dodawania zadania -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/quickAddTaskCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:contentDescription="@string/desc_add_task_button"
-            android:text="@string/dodaj_zadanie"
-            android:visibility="gone"
-            app:backgroundTint="?attr/colorPrimary"
-            app:cornerRadius="12dp"
-            app:icon="@drawable/ic_add"
-            app:iconPadding="8dp"
-            app:iconTint="?attr/colorOnPrimary"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settingsButton"
-            tools:ignore="VisualLintButtonSize" />
+            app:layout_constraintTop_toTopOf="parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <EditText
+                    android:id="@+id/quickTaskEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:hint="What needs to be done?"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapSentences"
+                    android:maxLines="1"
+                    android:padding="12dp" />
+
+                <ImageButton
+                    android:id="@+id/quickAddTaskButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Add Quick Task"
+                    android:src="@drawable/ic_add_circle_outline"
+                    app:tint="?attr/colorPrimary" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Tytuł sekcji "Your Tasks" -->
+        <TextView
+            android:id="@+id/yourTasksTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Your Tasks"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/quickAddTaskCard" />
+
+        <!-- Filtry (np. All, Pending, Completed) - można użyć ChipGroup -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/statusFilterChipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/yourTasksTitleTextView"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAll"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="All" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPending"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pending" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCompleted"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Completed" />
+        </com.google.android.material.chip.ChipGroup>
+
+
+        <!-- Twój istniejący filtr grup (kategorii) -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/groupFilterLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:hint="@string/label_filter_group"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addTaskButton"
+            app:layout_constraintTop_toBottomOf="@id/statusFilterChipGroup"
             app:startIconDrawable="@drawable/ic_category"
             app:startIconTint="?attr/colorPrimary">
 
@@ -66,11 +141,8 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/desc_group_spinner"
                 android:inputType="none"
-                tools:ignore="LabelFor,SpeakableTextPresentCheck" />
+                tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Początkowa widoczność może być 'gone', jeśli chcesz, aby empty state był pierwszy -->
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tasksRecyclerView"
@@ -78,80 +150,234 @@
             android:layout_height="0dp"
             android:layout_marginTop="12dp"
             android:clipToPadding="false"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
+            android:paddingBottom="72dp"
             android:scrollbars="vertical"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/groupFilterLayout"
-            app:layout_constraintVertical_bias="0.0" />
+            tools:listitem="@layout/task_item_layout" /> <!-- Załóż, że masz task_item_layout -->
 
-        <ImageView
-            android:id="@+id/emptyStateImageView"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:src="@drawable/ic_empty_list"
-            android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@+id/emptyStateTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:tint="?attr/colorOnSurfaceVariant"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/emptyStateTextView"
+        <!-- Widok dla pustego stanu listy -->
+        <LinearLayout
+            android:id="@+id/emptyStateLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="16dp"
-            android:text="@string/empty_state_message"
-            android:textAppearance="?attr/textAppearanceSubtitle1"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:visibility="visible"
+            android:orientation="vertical"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emptyStateImageView" />
+            app:layout_constraintTop_toBottomOf="@id/groupFilterLayout"
+            app:layout_constraintVertical_bias="0.4"
+            tools:ignore="UseCompoundDrawables">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddTask"
+            <ImageView
+                android:id="@+id/emptyStateImageView"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:contentDescription="@string/empty_state_message"
+                android:src="@drawable/ic_empty_list"
+                app:tint="?attr/colorOnSurfaceVariant" />
+
+            <TextView
+                android:id="@+id/emptyStateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/empty_state_message_detail"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+        </LinearLayout>
+
+        <!-- Przycisk Ustawień - rozważ przeniesienie do menu Toolbar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/settingsButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:contentDescription="@string/desc_add_task_fab"
-            android:src="@drawable/ic_add"
-            app:backgroundTint="?attr/colorSecondary"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/desc_settings_button"
+            android:text="@string/ustawienia"
+            app:icon="@drawable/ic_setting"
+            app:iconPadding="8dp"
+            app:iconTint="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@id/yourTasksTitleTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:tint="?attr/colorOnSecondary"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:layout_constraintTop_toTopOf="@id/yourTasksTitleTextView" />
 
-        <Button
-            android:id="@+id/testTaskStateUpdaterWorkerButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Test TaskStateUpdater Worker"
-            android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@id/testNearDeadlineWorkerButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="HardcodedText" />
-
-        <Button
-            android:id="@+id/testNearDeadlineWorkerButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Test NearDeadline Worker"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="HardcodedText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/desc_add_task_fab"
+        app:srcCompat="@drawable/ic_add"
+        app:backgroundTint="?attr/colorSecondary"
+        app:tint="?attr/colorOnSecondary" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:layout_margin="12dp"-->
+<!--    app:cardBackgroundColor="?attr/colorSurface"-->
+<!--    app:cardCornerRadius="20dp"-->
+<!--    app:cardElevation="8dp">-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:padding="16dp">-->
+
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/settingsButton"-->
+<!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:contentDescription="@string/desc_settings_button"-->
+<!--            android:text="@string/ustawienia"-->
+<!--            app:cornerRadius="12dp"-->
+<!--            app:icon="@drawable/ic_setting"-->
+<!--            app:iconPadding="8dp"-->
+<!--            app:iconTint="?attr/colorPrimary"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/addTaskButton"-->
+<!--            style="@style/Widget.MaterialComponents.Button"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:contentDescription="@string/desc_add_task_button"-->
+<!--            android:text="@string/dodaj_zadanie"-->
+<!--            android:visibility="gone"-->
+<!--            app:backgroundTint="?attr/colorPrimary"-->
+<!--            app:cornerRadius="12dp"-->
+<!--            app:icon="@drawable/ic_add"-->
+<!--            app:iconPadding="8dp"-->
+<!--            app:iconTint="?attr/colorOnPrimary"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/settingsButton"-->
+<!--            tools:ignore="VisualLintButtonSize" />-->
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/groupFilterLayout"-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:hint="@string/label_filter_group"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/addTaskButton"-->
+<!--            app:startIconDrawable="@drawable/ic_category"-->
+<!--            app:startIconTint="?attr/colorPrimary">-->
+
+<!--            <AutoCompleteTextView-->
+<!--                android:id="@+id/groupFilterAutoCompleteTextView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:contentDescription="@string/desc_group_spinner"-->
+<!--                android:inputType="none"-->
+<!--                tools:ignore="LabelFor,SpeakableTextPresentCheck" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        &lt;!&ndash; Początkowa widoczność może być 'gone', jeśli chcesz, aby empty state był pierwszy &ndash;&gt;-->
+
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/tasksRecyclerView"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:clipToPadding="false"-->
+<!--            android:paddingTop="12dp"-->
+<!--            android:paddingBottom="12dp"-->
+<!--            android:scrollbars="vertical"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/groupFilterLayout"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/emptyStateImageView"-->
+<!--            android:layout_width="96dp"-->
+<!--            android:layout_height="96dp"-->
+<!--            android:src="@drawable/ic_empty_list"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/emptyStateTextView"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_chainStyle="packed"-->
+<!--            app:tint="?attr/colorOnSurfaceVariant"-->
+<!--            tools:ignore="ContentDescription" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/emptyStateTextView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="16dp"-->
+<!--            android:text="@string/empty_state_message"-->
+<!--            android:textAppearance="?attr/textAppearanceSubtitle1"-->
+<!--            android:textColor="?attr/colorOnSurfaceVariant"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/emptyStateImageView" />-->
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fabAddTask"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="16dp"-->
+<!--            android:contentDescription="@string/desc_add_task_fab"-->
+<!--            android:src="@drawable/ic_add"-->
+<!--            app:backgroundTint="?attr/colorSecondary"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:tint="?attr/colorOnSecondary"-->
+<!--            tools:ignore="SpeakableTextPresentCheck" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/testTaskStateUpdaterWorkerButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            android:text="Test TaskStateUpdater Worker"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/testNearDeadlineWorkerButton"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            tools:ignore="HardcodedText" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/testNearDeadlineWorkerButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Test NearDeadline Worker"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            tools:ignore="HardcodedText" />-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--</com.google.android.material.card.MaterialCardView>-->

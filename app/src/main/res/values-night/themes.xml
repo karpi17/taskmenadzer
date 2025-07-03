@@ -1,5 +1,5 @@
 <!-- res/values-night/themes.xml -->
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <style name="Theme.TaskMenadzer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Kolory Podstawowe (Primary) dla trybu ciemnego -->
         <item name="colorPrimary">@color/app_color_primary_dark</item> <!-- np. purple_200 lub inny jaśniejszy fioletowy zdefiniowany jako app_color_primary_dark -->

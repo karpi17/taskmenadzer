@@ -23,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
@@ -32,7 +31,7 @@ import androidx.work.WorkManager;
 import com.example.taskmenadzer.model.AppDatabase;
 import com.example.taskmenadzer.model.Task;
 import com.example.taskmenadzer.model.TaskEntity;
-import com.taskmenadzer.R;
+import com.example.taskmenadzer.R;
 
 import java.util.ArrayList;
 import java.util.List;

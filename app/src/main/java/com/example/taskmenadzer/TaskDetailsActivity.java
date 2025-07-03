@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.taskmenadzer.model.Task;
-import com.taskmenadzer.R;
+import com.example.taskmenadzer.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

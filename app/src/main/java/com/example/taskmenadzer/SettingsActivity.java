@@ -12,13 +12,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-
-// Upewnij się, że ten import R jest poprawny dla Twojego projektu
 import com.google.firebase.auth.FirebaseAuth;
-import com.taskmenadzer.R; // Zakładam, że ten import jest poprawny
+import com.example.taskmenadzer.R;
 
 import java.util.Objects;
 

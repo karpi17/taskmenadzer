@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.taskmenadzer.model.Task;
 import com.google.android.material.color.MaterialColors;
-import com.taskmenadzer.R;
+import com.example.taskmenadzer.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

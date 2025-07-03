@@ -2,13 +2,6 @@ package com.example.taskmenadzer; // UPEWNIJ SIĘ, ŻE TO TWÓJ POPRAWNY PAKIET
 
 import static android.content.ContentValues.TAG;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.OptIn;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.media3.common.util.Log;
-import androidx.media3.common.util.UnstableApi;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +13,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.OptIn;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.media3.common.util.Log;
+import androidx.media3.common.util.UnstableApi;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -29,7 +29,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
-import com.taskmenadzer.R;
 
 import java.util.Objects;
 
@@ -40,16 +39,16 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText etEmailLogin, etPasswordLogin;
     private TextInputLayout tilEmailLogin, tilPasswordLogin;
     private ProgressBar progressBarLogin;
-    private TextView tvForgotPassword;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.taskmenadzer.R.layout.activity_login);
+        setContentView(com.example.taskmenadzer.R.layout.activity_login);
 
         // Inicjalizacja Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        tvForgotPassword = findViewById(R.id.tvForgotPassword); // Użyj poprawnego R
+        TextView tvForgotPassword = findViewById(R.id.tvForgotPassword); // Użyj poprawnego R
 
         // ... listenery dla btnLogin i tvGoToRegister ...
 
@@ -115,6 +114,8 @@ public class LoginActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    @OptIn(markerClass = UnstableApi.class)
     private void sendPasswordResetEmail(String email) {
         progressBarLogin.setVisibility(View.VISIBLE); // Pokaż progressBar
         mAuth.sendPasswordResetEmail(email)

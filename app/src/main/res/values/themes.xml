@@ -1,5 +1,5 @@
 <!-- res/values/themes.xml -->
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <style name="Theme.TaskMenadzer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/app_color_primary</item>
