@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ../backend-server
+    container_name: taskmenadzer-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://taskmenadzer-db:5432/taskdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      taskmenadzer-db:
+        condition: service_healthy
+    networks:
+      - task-network
+
+  taskmenadzer-db:
+    image: postgres:15-alpine
+    container_name: taskmenadzer-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=taskdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - task-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  task-network:
+    driver: bridge
+
+volumes:
+  postgres-data:

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Dark Shadow (Bottom Right) -->
+    <item android:left="4dp" android:top="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/space_shadow_dark"/>
+            <corners android:radius="16dp"/>
+        </shape>
+    </item>
+    
+    <!-- Light Shadow (Top Left) -->
+    <item android:right="4dp" android:bottom="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/space_shadow_light"/>
+            <corners android:radius="16dp"/>
+        </shape>
+    </item>
+    
+    <!-- Surface (Center) -->
+    <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/space_background_light"/>
+            <corners android:radius="16dp"/>
+        </shape>
+    </item>
+</layer-list>
